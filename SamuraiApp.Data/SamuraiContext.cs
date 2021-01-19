@@ -12,5 +12,11 @@ namespace SamuraiApp.Data
         public SamuraiContext(DbContextOptions<SamuraiContext> options) : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SamuraiBattle>()
+                .HasKey(s => new { s.SamuraiId, s.BattleId });
+        }
     }
 }
